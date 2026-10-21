@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#087443" />
+    <meta name="description" content="تسجيل الفرق واللاعبين في الدوري." />
+    <title>تسجيل الفرق واللاعبين | دوري كتاب السيدة فاطمة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html"
+          ><span class="brand-logo"
+            ><img
+              src="assets/LIGUE K1.png"
+              alt=""
+              onerror="
+                this.style.display = 'none';
+                this.parentElement.innerHTML =
+                  '<span class=&quot;fallback-mark&quot;>ك</span>';
+              " /></span
+          ><span class="brand-copy"
+            ><strong>دوري كتاب السيدة فاطمة</strong
+            ><small>رحمها الله · النسخة الخامسة  </small></span
+          ></a
+        ><button
+          class="menu-toggle"
+          id="menuBtn"
+          aria-label="فتح القائمة"
+          aria-expanded="false"
+        >
+          <i data-lucide="menu" aria-hidden="true"></i>
+        </button>
+        <nav class="main-nav" id="mainNav">
+          <a class="nav-link" href="index.html"
+            ><span class="nav-icon"
+              ><i data-lucide="house" aria-hidden="true"></i></span
+            ><span>الرئيسية</span></a
+          ><a class="nav-link" href="matches.html"
+            ><span class="nav-icon"
+              ><i data-lucide="goal" aria-hidden="true"></i></span
+            ><span>المباريات</span></a
+          ><a class="nav-link" href="standings.html"
+            ><span class="nav-icon"
+              ><i
+                data-lucide="chart-no-axes-column"
+                aria-hidden="true"
+              ></i></span
+            ><span>الترتيب</span></a
+          ><a class="nav-link" href="teams.html"
+            ><span class="nav-icon"
+              ><i data-lucide="users" aria-hidden="true"></i></span
+            ><span>الفرق</span></a
+          ><a class="nav-link" href="scorers.html"
+            ><span class="nav-icon"
+              ><i
+                data-lucide="chart-no-axes-column"
+                aria-hidden="true"
+              ></i></span
+            ><span>إحصائيات اللاعبين</span></a
+          ><a class="nav-link" href="admin.html"
+            ><span class="nav-icon"
+              ><i data-lucide="shield-check" aria-hidden="true"></i></span
+            ><span>الإدارة</span></a
+          >
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <section class="page-hero">
+        <div>
+          <span class="eyebrow green">اللجنة المنظمة</span>
+          <h1>تسجيل الفرق واللاعبين</h1>
+          <p>إضافة بيانات الفرق والتشكيلات الرسمية.</p>
+        </div>
+        <div class="page-hero-icon">
+          <i data-lucide="users" aria-hidden="true"></i>
+        </div>
+      </section>
+      <div class="admin-tabs">
+        <a href="admin.html">الرئيسية</a
+        ><a href="admin-register.html" class="active">تسجيل الفرق واللاعبين</a
+        ><a href="admin-events.html">أحداث المباريات</a>
+      </div>
+      <div class="notice" id="connectionNotice">جاري التحقق من الاتصال…</div>
+      <section class="admin-grid" id="registrationForms" hidden>
+        <form id="addTeamForm" class="admin-card">
+          <div class="admin-card-head">
+            <span class="admin-icon"
+              ><i data-lucide="users" aria-hidden="true"></i
+            ></span>
+            <div>
+              <h2>تسجيل فريق</h2>
+              <p>المعلومات الأساسية والهوية البصرية.</p>
+            </div>
+          </div>
+          <label
+            >اسم الفريق<input
+              id="newTeamName"
+              required
+              maxlength="60"
+              placeholder="اسم الفريق" /></label
+          ><label>المجموعة<select id="newTeamGroup" required></select></label
+          ><label
+            >لوغو الفريق
+            <span class="field-hint"
+              >اختار صورة من الحاسوب (PNG أو JPG، حتى 5MB)</span
+            ><input id="newTeamLogo" type="file" accept="image/*" /><img
+              id="newTeamLogoPreview"
+              class="upload-preview"
+              alt="معاينة لوغو الفريق"
+              hidden /></label
+          ><label
+            >اختصار الفريق <span class="field-hint">اختياري</span
+            ><input
+              id="newTeamShort"
+              maxlength="4"
+              placeholder="مثال: أمل" /></label
+          ><button class="btn btn-green full" type="submit">حفظ الفريق</button>
+        </form>
+        <form id="addPlayerForm" class="admin-card">
+          <div class="admin-card-head">
+            <span class="admin-icon"
+              ><i data-lucide="user-round" aria-hidden="true"></i
+            ></span>
+            <div>
+              <h2>تسجيل لاعب</h2>
+              <p>إضافة لاعب وربطه بفريقه.</p>
+            </div>
+          </div>
+          <label
+            >اسم اللاعب<input
+              id="newPlayerName"
+              required
+              maxlength="80"
+              placeholder="الاسم الكامل" /></label
+          ><label>الفريق<select id="newPlayerTeam" required></select></label
+          ><label
+            >صفة اللاعب<select id="newPlayerRole" required>
+              <option value="player">لاعب</option>
+              <option value="captain">قائد الفريق</option>
+            </select></label
+          ><label
+            >صورة اللاعب
+            <span class="field-hint"
+              >اختار صورة من الحاسوب (PNG أو JPG، حتى 5MB)</span
+            ><input id="newPlayerPhoto" type="file" accept="image/*" /><img
+              id="newPlayerPhotoPreview"
+              class="upload-preview"
+              alt="معاينة صورة اللاعب"
+              hidden /></label
+          ><button class="btn btn-green full" type="submit">حفظ اللاعب</button>
+        </form>
+      </section>
+      <section class="section-block">
+        <div class="section-heading compact">
+          <div>
+            <h2>التسجيلات الحالية</h2>
+            <p>الفرق واللاعبون المسجلون في قاعدة البيانات.</p>
+          </div>
+        </div>
+        <div id="registeredTeams" class="team-grid"></div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand-wrap">
+          <img
+            class="footer-mark"
+            src="assets/LIGUE K1.png"
+            alt=""
+            onerror="this.style.display = 'none'"
+          /><a class="footer-brand" href="index.html">دوري كتاب السيدة فاطمة</a>
+        </div>
+        <p>الرياضة أخلاق، تعاون، وروح رياضية.</p>
+        <small>رحمها الله · النسخة الخامسة  </small>
+        <small class="footer-copyright"
+          >© <span>Abdelmoughit</span> — جميع الحقوق محفوظة</small
+        >
+        <div class="social-links" aria-label="روابط التواصل">
+          <a
+            href="https://www.facebook.com/share/1C9Z2YBMBb/?mibextid=wwXIfr"
+            target="_blank"
+            rel="noopener"
+            aria-label="Facebook"
+            title="Facebook"
+            ><i data-lucide="facebook"></i></a
+          ><a
+            href="https://www.instagram.com/kotabfatima?cplk=MThjeGsycDN3dWEwMw=="
+            target="_blank"
+            rel="noopener"
+            aria-label="Instagram"
+            title="Instagram"
+            ><i data-lucide="instagram"></i></a
+          ><a
+            href="https://wa.me/+212693943239"
+            target="_blank"
+            rel="noopener"
+            aria-label="WhatsApp"
+            title="WhatsApp"
+            ><i data-lucide="message-circle"></i></a
+          ><a
+            href="https://youtube.com/@kotabfatima?si=G_GAcABDcWDPLFBq"
+            target="_blank"
+            rel="noopener"
+            aria-label="YouTube"
+            title="YouTube"
+            ><i data-lucide="youtube"></i
+          ></a>
+        </div>
+        <br /><a class="footer-admin" href="admin.html">الإدارة</a>
+      </div>
+    </footer>
+    <nav class="mobile-nav" aria-label="التنقل السريع">
+      <a class="mobile-link" href="index.html"
+        ><span><i data-lucide="house" aria-hidden="true"></i></span
+        ><small>الرئيسية</small></a
+      ><a class="mobile-link" href="matches.html"
+        ><span><i data-lucide="goal" aria-hidden="true"></i></span
+        ><small>المباريات</small></a
+      ><a class="mobile-link" href="standings.html"
+        ><span
+          ><i data-lucide="chart-no-axes-column" aria-hidden="true"></i></span
+        ><small>الترتيب</small></a
+      ><a class="mobile-link" href="teams.html"
+        ><span><i data-lucide="users" aria-hidden="true"></i></span
+        ><small>الفرق</small></a
+      ><a class="mobile-link" href="scorers.html"
+        ><span
+          ><i data-lucide="chart-no-axes-column" aria-hidden="true"></i></span
+        ><small>إحصائيات اللاعبين</small></a
+      ><a class="mobile-link" href="admin.html"
+        ><span><i data-lucide="shield-check" aria-hidden="true"></i></span
+        ><small>الإدارة</small></a
+      >
+    </nav>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase.env.example.js"></script>
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+    <script>
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    </script>
+  </body>
+</html>
